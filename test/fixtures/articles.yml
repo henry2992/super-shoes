@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  total_in_shelf: 1
+  total_in_vault: 1
+
+two:
+  name: MyString
+  description: MyText
+  total_in_shelf: 1
+  total_in_vault: 1
