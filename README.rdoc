@@ -26,3 +26,44 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+== SUPER SHOES APP
+
+== THE PROBLEM
+
+En la empresa "Super Zapatos" ocupan realizar una aplicación que sea compatible en un dispositivo android para llevar el control de inventario del calzado disponible en su zapatería. Dada esta necesidad, los expertos de tecnología de la empresa consideraron que la mejor opción sería hacer una aplicación nativa de android que se encargara de mostrar la información y un backend en Ruby on Rails que enviara por medio de servicios REST la información almacenada en la Base de Datos. Además esta aplicación de Rails debería de permitir a los administradores de la empresa poder agregar la información en la base de datos.
+Dada la necesidad anteriormente planteada, se consultó a un experto de base de datos y él recomendó tener una base de datos compleja para lograr el proyecto. Sin embargo, como el presupuesto del cliente era limitado, se concluyó que la mejor opción era tener únicamente el mantenimiento y los servicios esenciales de la aplicación.
+Por otro lado, se consideró que para hacer los mantenimientos bastaban los formularios autogenerados por Rails con solo una modificación para poder elegir la tienda del artículo. Estos formularios no tienen que tener ningún tipo de autenticación para limitar el acceso al formulario. Eso sí, el cliente solicitó que quería que la parte administrativa tuviera un diseño gráfico sencillo pero agradable (nada muy complejo, con un encabezado, un pie de página y un fondo sencillo basta). Añadido a lo anterior y dadas las necesidades de la aplicación de android, es necesario realizar al menos 3 servicios, cuyos URL y respuestas están descritos en la documentación del API adjunta a esta prueba.
+
+== THE SOLUTION
+
+This app is a CRUD for managing a shoe store. It also has 3 different REST services to connect those to a Android App. This services are protected by HTTP Authentification
+
+
+== THE APP
+
+* To run the app locally please download it
+
+* Run rake db:create  db:migrate db:seed
+
+* Start the rails server and go to http://localhost:3000
+
+== The Services
+
+This app has 3 REST services:
+
+* http://localhost:3000/services/stores (List all stores)
+* http://localhost:3000/services/articles (List all articles)
+* http://localhost:3000/services/articles/stores:id 
+
+== ONLINE APP
+
+
+
+
+RSPEC tests are located in the following directories:
+/spec/controllers/stores_controller_spec.rb (REST service testing)
+/spec/features/articles_spec.rb (Capybara test for adding articles belonging to a store)
+/spec/features/stores_spec.rb (Capybara test for adding stores)
+/spec/models/store_spec.rb (Form validation testing)
