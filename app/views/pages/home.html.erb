@@ -1,0 +1,41 @@
+
+
+<div class="container">
+	
+	<h1>All Stores</h1>
+	
+		
+		<% @stores.each do |store| %>
+
+			<div class="store_holder">
+				<h2 class="center"><%= store.name %></h2>
+				<p class="center"><%= store.address %></p>
+			
+
+				<% store.articles.each do |article| %>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="article-item">
+								<p><%= article.name %></p>
+								<p><%= article.description %></p>
+								<p><%= article.price %></p>
+								<p><%= article.total_in_shelf %></p>
+								<p><%= article.total_in_vault %></p>
+							</div>
+						</div>
+					</div>
+				<% end %>
+
+			</div>
+
+		<% end %>
+		
+
+		</div>
+		
+
+
+	</div>
+
+
+</div>

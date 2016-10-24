@@ -19,6 +19,12 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+
   <div class="field">
     <%= f.label :total_in_shelf %><br>
     <%= f.number_field :total_in_shelf %>
@@ -28,9 +34,11 @@
     <%= f.number_field :total_in_vault %>
   </div>
 
+  <div class="field form-group">
+    <%= f.label :store_id %><br>
+    <%= f.select :store_id, options_from_collection_for_select(Store.all, :id, :name, @article.store_id) %>
+  </div>
 
- 
-   <%= f.collection_select :store, Store.all, :id, :name ,prompt: true %>
 
 
   <div class="actions">

@@ -1,34 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  
+    <p id="notice"><%= notice %></p>
+    <%= link_to 'New Store', new_store_path, class: 'btn btn-large btn-info white' %>
+       
 
-<h1>Listing Stores</h1>
+       <div class="row">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+         <% @stores.each do |store| %>
 
-  <tbody>
-    <% @stores.each do |store| %>
-      <tr>
-        <td><%= store.name %></td>
-        <td><%= store.address %></td>
-        <td><%= link_to 'Show', store %></td>
-        <td><%= link_to 'Edit', edit_store_path(store) %></td>
-        <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+          <div class="col-md-4 ">
+            <div class="holder">
+                <p>Store Name: <%= store.name %></p>
+                <p>Store Address: <%= store.address %></p>
+
+                <p><%= link_to 'Show', store , class: 'btn btn-large btn-success white' %></p>
+                <p><%= link_to 'Edit', edit_store_path(store) , class: 'btn btn-large btn-success white' %></p>
+                <p><%= link_to 'Destroy', store,  method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-large btn-danger white' %></p> 
+            </div>
+           
+           </div>
+
+         <% end %>
+
+       </div>
+
+   
+   
+</div>
 
 
-      
 
-      
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Store', new_store_path %>
+
+
+
+
+
+

@@ -1,24 +1,41 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @article.name %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Description:</strong>
-  <%= @article.description %>
-</p>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Total in shelf:</strong>
-  <%= @article.total_in_shelf %>
-</p>
+	<p>
+	  <strong>Name:</strong>
+	  <%= @article.name %>
+	</p>
 
-<p>
-  <strong>Total in vault:</strong>
-  <%= @article.total_in_vault %>
-</p>
+	<p>
+	  <strong>Description:</strong>
+	  <%= @article.description %>
+	</p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+	<p>
+	  <strong>Price:</strong>
+	  <%= @article.price %>
+	</p>
+
+	<p>
+	  <strong>Total in shelf:</strong>
+	  <%= @article.total_in_shelf %>
+	</p>
+
+	<p>
+	  <strong>Total in vault:</strong>
+	  <%= @article.total_in_vault %>
+	</p>
+
+	<p>
+	  <strong>Store:</strong>
+	  <%= @article.store.name %>
+	</p>
+
+	<%= link_to 'Edit', edit_article_path(@article) %> |
+	<%= link_to 'Back', articles_path %>
+
+</div>
+
+

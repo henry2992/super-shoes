@@ -1,16 +1,10 @@
 class StoresController < ApplicationController
-  before_action :set_store, only: [:show, :edit, :update, :destroy, :rest_articles_by_store]
+  before_action :set_store, only: [:show, :edit, :update, :destroy, :services_articles_by_store]
 
   include ActionController::HttpAuthentication::Basic::ControllerMethods
-
-  http_basic_authenticate_with :name => "user", :password => "password"
+  http_basic_authenticate_with :name => "user", :password => "password", only: [:services_index, :services_articles_by_store]
 
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
-
-  
-  before_filter :cors_preflight_check
-  after_filter :cors_set_access_control_headers
-
 
   # GET /stores
   # GET /stores.json
@@ -73,37 +67,16 @@ class StoresController < ApplicationController
   end
 
 
-  def rest_index
+  def services_index
     @stores = Store.all
 
-    myhash= { stores: @stores.as_json(:only => [:id, :name, :address]) , status: "success", total_elements: @stores.count.as_json  }
+    render json: { stores: @stores.as_json(:only => [:id, :name, :address]) , status: "success", total_elements: @stores.count.as_json  }
     
-    render json: myhash
   end
 
-  def rest_articles_by_store
+  def services_articles_by_store
     @articles = @store.articles.all
-    myhash = { store: @store.as_json( :only => [:id, :name, :address ], :include => { :articles => { :only => :name } } ) , status: "success", total_elements: @articles.count.as_json }
-    render :json => myhash 
-  end
-
-
-  def cors_set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
-    headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
-    headers['Access-Control-Max-Age'] = "1728000"
-  end
-
-  def cors_preflight_check
-    if request.method == 'OPTIONS'
-      headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
-      headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
-      headers['Access-Control-Max-Age'] = '1728000'
-
-      render :text => '', :content_type => 'text/plain'
-    end
+    render :json => { store: @store.as_json( :only => [:id, :name, :address ], :include => { :articles => { :only => :name } } ) , status: "success", total_elements: @articles.count.as_json }
   end
 
 

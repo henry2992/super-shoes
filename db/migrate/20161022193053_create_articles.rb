@@ -7,7 +7,7 @@ class CreateArticles < ActiveRecord::Migration
       t.integer :total_in_shelf
       t.integer :total_in_vault
 
-      t.belongs_to :store_id, index: true
+      t.belongs_to :store, index: true
 
       t.timestamps null: false
     end

@@ -33,10 +33,22 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 gem 'rails_admin'
 
+
+gem 'bootstrap-sass'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails', '~> 4.0', :require => false
+  gem 'database_cleaner'
+  gem "better_errors"
+  gem 'capybara'
+  
 end
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

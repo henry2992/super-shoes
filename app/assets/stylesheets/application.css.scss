@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+.center{
+	text-align: center;
+}
+.white {
+	color: white !important;
+}
+
+
+.store_holder{
+	padding: 30px;
+	margin: 20px 0; 
+	border: 1px solid #e7e7e7;
+}
+
+.article-item{
+	border: 1px solid #e7e7e7;
+	padding: 5px;
+	margin: 10px 0; 
+}
+
+.holder {
+	border: 1px solid #e7e7e7;
+	padding: 5px;
+	margin: 10px 10px; 
+}
+
+
+.footer {
+	text-align: center;
+	background-color: #e7e7e7;
+}
+

@@ -1,33 +1,36 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Articles</h1>
+<div class="container">
+  
+    <p id="notice"><%= notice %></p>
+    
+    <%= link_to 'New Article', new_article_path, class: 'btn btn-large btn-info white', id: 'newArticle' %>
+       
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Total in shelf</th>
-      <th>Total in vault</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+       <div class="row">
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.name %></td>
-        <td><%= article.description %></td>
-        <td><%= article.total_in_shelf %></td>
-        <td><%= article.total_in_vault %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+         <% @articles.each do |article| %>
 
-<br>
+          <div class="col-md-4 ">
+            <div class="holder">
+                <p> Name: <%= article.name %></p>
+                <p> Description: <%= article.description %></p>
+                <p> Price: <%= article.price %></p>
+                <p> Total in Shelf: <%= article.total_in_shelf %></p>
+                <p> Total in Vault <%= article.total_in_vault %></p>
+                <p> Store Name: <%= article.store.name %></p>
 
-<%= link_to 'New Article', new_article_path %>
+                <p><%= link_to 'Show', article , class: 'btn btn-large btn-success white' %></p>
+                <p><%= link_to 'Edit', edit_article_path(article) , class: 'btn btn-large btn-success white' %></p>
+                <p><%= link_to 'Destroy', article,  method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-large btn-danger white' %></p> 
+            </div>
+           
+           </div>
+
+         <% end %>
+
+       </div>
+
+   
+   
+</div>
+

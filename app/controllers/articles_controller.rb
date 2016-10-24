@@ -1,11 +1,13 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+  include ActionController::HttpAuthentication::Basic::ControllerMethods
+  http_basic_authenticate_with :name => "user", :password => "password", only: [:services_index]
+
   # GET /articles
   # GET /articles.json
   def index
     @articles = Article.all
-
   end
 
   # GET /articles/1
@@ -64,9 +66,9 @@ class ArticlesController < ApplicationController
 
 
   # REST SERVICES
-  def rest_index
+  def services_index
     @articles = Article.all
-    hash= { articles: @articles.as_json(:only => [:id, :name, :description, :total_in_shelf, :total_in_vault ], :include => { :store => { :only => :name } } ) , status: "success", total_elements: @articles.count.as_json  }
+    hash= { articles: @articles.as_json(:only => [:id, :name, :price,:description, :total_in_shelf, :total_in_vault ], :include => { :store => { :only => :name } } ) , status: "success", total_elements: @articles.count.as_json  }
     render json: hash
   end
 
@@ -78,6 +80,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:name, :description, :total_in_shelf, :total_in_vault)
+      params.require(:article).permit(:name,  :price, :description, :total_in_shelf, :total_in_vault, :store_id)
     end
 end
